@@ -44,9 +44,7 @@ pub fn main() !void {
     var file = try std.fs.openFileAbsolute(fullPath, openFlags);
     defer file.close();
 
-    // seeking file position so that to append at end
-    // var stat = try file.stat();
-    // try file.seekTo(stat.size);
+    // seeking file position so that to append at beginning
     try file.seekTo(0);
 
     var fullText = try std.fmt.allocPrint(allocator, "Username: {s}, Domain: {s}, Password: {s}", .{ username, domain, password });
